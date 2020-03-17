@@ -12,7 +12,7 @@ def main():
 	# d, *pls = sys.argv[1:]
 	d = sys.argv[1]
 	pls = sys.argv[2:]
-	path = f"./{d}"
+	path = "./{}".format(d)
 
 	vids = {}
 	for pl in pls:
@@ -21,7 +21,7 @@ def main():
 				yt = pytube.YouTube(url)
 				vids[yt.title] = (yt, url)
 			except:
-				print(f"Could not prepare video {url} (video private, deleted, copyright etc)")
+				print("Could not prepare video {} (video private, deleted, copyright etc)".format(url))
 
 	# download videos
 	print("Downloading...")
@@ -31,9 +31,9 @@ def main():
 		yt, url = vid
 
 		try:
-			print(f"{i} of {n} - {url} : {title}")
+			print("{} of {} - {} : {}".format(i, n, url, title))
 		except:
-			print(f"{i} of {n} - {url} : titleError")
+			print("{} of {} - {} : titleError".format(i, n, url))
 
 		try:
 			yt.streams.filter(only_audio=True)[0].download(path)
@@ -46,13 +46,13 @@ def main():
 	# convert from mp4 to mp3
 	print("Converting...")
 	for file in os.listdir(path):
-		os.rename(f"{path}/{file}", f"{path}/{''.join(file.split('.')[:-1])}.mp3")
+		os.rename("{}/{}".format(path, file), "{}/{}.mp3".format(path, ''.join(file.split('.')[:-1])))
 	print("Done converting.")
 
 
 	# zip all files in dir
 	print("Zipping...")
-	zipf = zipfile.ZipFile(f"{d}.zip", 'w', zipfile.ZIP_DEFLATED)
+	zipf = zipfile.ZipFile("{}.zip".format(d), 'w', zipfile.ZIP_DEFLATED)
 	for root, dirs, files in os.walk(path):
 		for file in files:
 			zipf.write(os.path.join(root, file))
