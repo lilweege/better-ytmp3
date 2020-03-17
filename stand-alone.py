@@ -1,12 +1,6 @@
 from pytube import Playlist, YouTube
 import os
 
-'''
-https://www.youtube.com/playlist?list=PLLGT0cEMIAzeqDa_h5pEQI4V2kjS2sxVH
-https://www.youtube.com/playlist?list=PLLGT0cEMIAzd9_PKkkq6eJr9RjHDvKUXC
-https://www.youtube.com/playlist?list=PLLGT0cEMIAzf2ye4spDr9HM-rGgbDifZQ
-'''
-
 d = input("Name of download folder: ")
 n = int(input("How many playlists: "))
 print("Enter playlist urls")

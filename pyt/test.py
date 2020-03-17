@@ -9,7 +9,9 @@ def main():
 
 	# load videos while removing duplicates
 	print("Preparing to download, this may take a while...")
-	d, *pls = sys.argv[1:]
+	# d, *pls = sys.argv[1:]
+	d = sys.argv[1]
+	pls = sys.argv[2:]
 	path = f"./{d}"
 
 	vids = {}
