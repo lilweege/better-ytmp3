@@ -7,7 +7,8 @@ print("Enter playlist urls")
 
 playlist = set()
 for i in range(n):
-    for vid in Playlist(input()):
+    pl = Playlist(input())
+    for vid in pl:
         playlist.add(vid)
 
 total = len(playlist)
